@@ -1,0 +1,37 @@
+.roomCardContainer {
+    width: 100%;
+
+}
+
+.roomCardContainer h1 {
+    font-size: 23px;
+    font-weight: 600;
+    min-height: 75px;
+    width: 290px;
+}
+
+.roomImgContainer {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.roomImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+
+
+.roomLink:hover .roomImg {
+    transform: scale(1.2) rotate(5deg);
+    filter: blur(3px);
+}
+
+.roomInfo p {
+
+    font-weight: 600;
+    font-size: 16px;
+}
