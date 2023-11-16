@@ -3,13 +3,15 @@ import axios from "axios";
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Form, Link, useNavigate } from "react-router-dom";
+import { saveUser } from "../../hooks/saveUser";
 import { uploadImage } from "../../hooks/uploadImage";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
   const { signInWithGoogle, updateUserProfile, createUser, reRenderUser, setReRenderUser, naigateLocation } = useContext(AuthContext)
 
-  const naigate = useNavigate()
+  const navigate = useNavigate()
+  const axios = UseAxios()
 
   const adress = naigateLocation.state ? naigateLocation.state : "/"
 
@@ -24,10 +26,13 @@ const SignUp = () => {
     try {
 
       const { data } = await uploadImage(image)
-      const signUp = await createUser(email, pass)
+      const { user } = await createUser(email, pass)
+      // console.log(user.email)
       await updateUserProfile(name, data?.display_url)
+      await axios.post("/jwt", { email: user.email })
+      await saveUser(user)
       setReRenderUser(!reRenderUser)
-      naigate(adress)
+      navigate(adress)
 
 
     }
@@ -35,6 +40,20 @@ const SignUp = () => {
       console.log(err)
     }
   }
+
+
+
+  const mediaLogIn = async (media) => {
+
+    const { user } = await media()
+    console.log(user.email)
+    await axios.post("/jwt", { email: user.emai })
+    await saveUser(user)
+    navigate(adress)
+  }
+
+
+
   return (
     <div className='flex justify-center items-center min-h-screen'>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
@@ -121,7 +140,7 @@ const SignUp = () => {
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer' onClick={() => signInWithGoogle()}>
+        <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer' onClick={() => mediaLogIn(signInWithGoogle)}>
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>

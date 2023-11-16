@@ -1,6 +1,8 @@
+import UseAxios from "../../hooks/UseAxios";
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { saveUser } from "../../hooks/saveUser";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
@@ -9,22 +11,30 @@ const Login = () => {
   const LOCATION = useLocation()
   setNaigateLocation(LOCATION)
 
-  const mediaLogIn = (media) => {
-    media()
-      .then(res => navigate(LOCATION?.state ? LOCATION.state : "/"))
+  const axios = UseAxios()
+
+
+  const mediaLogIn = async (media) => {
+
+    const { user } = await media()
+    console.log(user.email)
+    await axios.post("/jwt", { email: user.emai })
+    await saveUser(user)
+    navigate(LOCATION?.state ? LOCATION.state : "/")
   }
 
-  const logIn = (e) => {
+  const logIn = async (e) => {
     e.preventDefault()
     const form = e.target
     const email = form.email.value
     const pass = form.password.value
     console.log(email, pass)
-    signIn(email, pass)
-      .then(res => {
-        navigate(LOCATION?.state ? LOCATION.state : "/")
+    const { user } = await signIn(email, pass)
+    await axios.post("/jwt", { email: user.email })
+    await saveUser(user)
+    navigate(LOCATION?.state ? LOCATION.state : "/")
 
-      })
+
 
   }
   return (

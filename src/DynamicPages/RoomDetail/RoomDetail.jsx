@@ -1,6 +1,7 @@
 import "./RoomDetail.css";
 import SetHelmet from "../../SetHelmet";
 import UseAxios from "../../hooks/UseAxios";
+import UseAxiosSequre from "../../hooks/UseAxiosSequre";
 import { data } from "autoprefixer";
 import { useEffect, useState } from "react";
 import { DateRangePicker } from "react-date-range";
@@ -12,7 +13,7 @@ const RoomDetail = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [room, setRoom] = useState({})
     const { id } = useParams()
-    const axios = UseAxios()
+    const axios = UseAxiosSequre()
     useEffect(() => {
 
         axios.get(`/room/${id}`)

@@ -1,3 +1,4 @@
+import UseAxios from "../../../hooks/UseAxios";
 import avatarImg from "../../../assets/images/placeholder.jpg";
 import useAuth from "../../../hooks/useAuth";
 import { useContext, useState } from "react";
@@ -9,6 +10,12 @@ import { AuthContext } from "../../../providers/AuthProvider";
 const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { user, logOut } = useContext(AuthContext)
+  const axios = UseAxios()
+  const handleLogout = async () => {
+    await logOut()
+    await axios.get("/logout")
+
+  }
 
   return (
     <div className='relative'>
@@ -43,7 +50,7 @@ const MenuDropdown = () => {
           {
             user ?
               <div className='flex flex-col cursor-pointer'>
-                <p className="block  px-4 py-3 hover:bg-neutral-100 transition font-semibold" onClick={() => logOut()}>LogOut</p>
+                <p className="block  px-4 py-3 hover:bg-neutral-100 transition font-semibold" onClick={() => handleLogout()}>LogOut</p>
                 <Link className="block px-4 py-3 hover:bg-neutral-100 transition font-semibold"> Profile</Link>
 
               </div>
