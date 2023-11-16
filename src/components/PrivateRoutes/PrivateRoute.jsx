@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
-const PrivateRoute = ({ childrean }) => {
+const PrivateRoute = ({ children }) => {
 
     const { loading, user } = useContext(AuthContext)
     if (loading) {
@@ -13,11 +13,7 @@ const PrivateRoute = ({ childrean }) => {
     if (!user) {
         return <Navigate state={location.pathname} replace to={"/login"}></Navigate>
     }
-    return (
-        <div>
-
-        </div>
-    );
+    return children
 };
 
 export default PrivateRoute;

@@ -17,6 +17,7 @@ const Home = () => {
 
   useEffect(() => {
 
+    setLoadingData(true)
 
     axios.get(`/rooms/${category}`)
       .then(res => {

@@ -1,0 +1,154 @@
+.roomDetailContainer {
+    width: 1200px;
+    margin: auto;
+}
+
+.roomDetailsHeading h1 {
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.roomDetailsHeading p {
+    font-size: 22px;
+}
+
+
+.roomBigImg {
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.roomBigImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+
+
+.roomDetailsHolder {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: self-start;
+    gap: 10px;
+    flex-direction: column;
+}
+
+
+.hostBox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.hostBox p {
+    font-size: 24px;
+    font-weight: 500;
+
+}
+
+.hostImgBox {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+
+.hostImgBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.roomInfoWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 68px 0 0 0;
+
+
+
+
+}
+
+.roomCapacity {
+    display: flex;
+    width: 284px;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+    color: #a2a2a2;
+}
+
+
+.roomDescription {
+    border-bottom: 1px solid #d1d1d1;
+    padding: 31px 0;
+    border-top: 1px solid #d1d1d1;
+    font-size: 20px;
+    color: #3f3f3f;
+    margin: 56px 0 0 0;
+}
+
+
+.roomBookCalender {
+    padding: 20px 10px;
+    border-radius: 9px;
+    border: 1px solid rgb(221, 221, 221);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+
+.roomBookCalender>p {
+    border-bottom: 1px solid #e7e7e7;
+    color: #818181;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 0 0 11px 0;
+    width: 100%;
+}
+
+.roomBookCalender>p span {
+    color: #000000;
+    font-size: 27px;
+
+}
+
+.reserveBtn {
+    border-top: 1px solid rgb(211, 211, 211);
+    border-bottom: 1px solid rgb(211, 211, 211);
+    width: 100%;
+}
+
+
+.reserveBtn button {
+    background: #fb5d78;
+    width: 100%;
+    color: white;
+    padding: 8px 0;
+    border-radius: 5px;
+}
+
+.rdrDefinedRangesWrapper {
+    display: none;
+}
+
+.reserveTotal {
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 8px 0 0 0;
+}
